@@ -18,6 +18,7 @@ class AddContactForm(forms.Form):
         # Return a validation error if the contact exists
         if Contact.objects.filter(email=self.cleaned_data['email'].strip()).exists():
             raise forms.ValidationError('A Contact with this emails already exists')
+        return self.cleaned_data['email']
     
     def save(self):
         contact = Contact.objects.create(
