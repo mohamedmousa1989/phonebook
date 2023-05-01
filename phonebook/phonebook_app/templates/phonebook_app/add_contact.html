@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center p-5">
+    <h1 class="mb-5">Add Contact</h1>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {% if form_errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field_errors in form_errors.values %}
+                            {% for error in field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {{ add_contact_form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+{% endblock content %}

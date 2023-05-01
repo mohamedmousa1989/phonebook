@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center mt-5">{{ contact.first_name }} {{ contact.last_name }}</h1>
+<div class="p-5">
+<p><span class="fw-bold">Email:</span> {{ contact.email }}</p>
+    <div>
+        <p class="fw-bold">Phone numbers:</p>
+        <ul>
+            {% for phone_number in phone_numbers %}
+            <li>{{ phone_number.category }}: {{ phone_number.phone_number }}</li>
+            {% endfor %}
+        <ul>
+    </div>
+</div>
+{% endblock content %}

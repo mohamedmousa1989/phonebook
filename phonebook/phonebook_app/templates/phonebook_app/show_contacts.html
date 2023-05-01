@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center mb-5">Contacts</h1>
+<div class="px-5">
+    {% if object_list %}
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Details</th>
+        </tr>
+        {% for contact in object_list %}
+        <tr>
+            <td>{{ contact.first_name }}</td>
+            <td>{{ contact.last_name }}</td>
+            <td>{{ contact.email }}</td>
+            <td><a href="{% url 'phonebook_app:show_contact_details' contact.id %}">details</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No Contacts to show</p>
+    {% endif %}
+</div>
+{% endblock content %}
